@@ -1,0 +1,154 @@
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  border: 2px solid transparent;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.search-container.focused .search-input-wrapper {
+  border-color: #475569;
+  box-shadow: 0 8px 32px rgba(71, 85, 105, 0.2);
+  transform: translateY(-2px);
+}
+
+.search-icon {
+  padding: 1rem 0 1rem 1.5rem;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.search-container.focused .search-icon {
+  color: #475569;
+}
+
+.search-input {
+  flex: 1;
+  padding: 1rem 0.5rem;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #2d3748;
+  font-family: inherit;
+}
+
+.search-input::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.clear-button {
+  padding: 1rem 1.5rem 1rem 0.5rem;
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+}
+
+.clear-button:hover {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.search-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 12px;
+  margin-top: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: slideDown 0.2s ease-out;
+  z-index: 10;
+}
+
+.suggestion-text {
+  color: #64748b;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .search-input-wrapper {
+    border-radius: 12px;
+  }
+  
+  .search-icon {
+    padding: 0.875rem 0 0.875rem 1.25rem;
+  }
+  
+  .search-input {
+    padding: 0.875rem 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .clear-button {
+    padding: 0.875rem 1.25rem 0.875rem 0.5rem;
+  }
+  
+  .search-input::placeholder {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-input::placeholder {
+    content: "Search contacts...";
+  }
+  
+  .search-suggestions {
+    margin-top: 0.25rem;
+    padding: 0.75rem;
+  }
+  
+  .suggestion-text {
+    font-size: 0.8rem;
+  }
+}
+
+/* Focus ring for accessibility */
+.search-input:focus-visible {
+  outline: 2px solid #475569;
+  outline-offset: 2px;
+}
+
+.clear-button:focus-visible {
+  outline: 2px solid #475569;
+  outline-offset: 2px;
+}
